@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Evento</title>
+  <!-- Incluindo o Bootstrap via CDN -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f4f4;
+    }
+    #auth-form, #event-form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    #app {
+      margin-top: 50px;
+    }
+    input, textarea {
+      margin-bottom: 15px;
+    }
+    button {
+      width: 100%;
+    }
+    #event-list ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .event-item {
+      background-color: white;
+      border-radius: 50%;
+      padding: 20px;
+      margin: 15px 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.2s ease-in-out;
+    }
+    .event-item:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Área de autenticação (futuramente poderá ser usada para login) -->
+  <div id="auth-form" class="container">
+    <h2 class="text-center">Login</h2>
+    <input type="text" id="username" class="form-control" placeholder="Usuário">
+    <input type="password" id="password" class="form-control" placeholder="Senha">
+    <button onclick="login()" class="btn btn-primary mt-3">Login</button>
+  </div>
+
+  <!-- Área de gerenciamento de eventos -->
+  <div id="app" class="container">
+    <h1 class="text-center">Gerenciamento de Eventos</h1>
+    
+    <!-- Formulário de cadastro de evento -->
+    <div id="event-form">
+      <h2>Cadastrar Evento</h2>
+      <input type="text" id="event-name" class="form-control" placeholder="Nome do Evento">
+      <input type="date" id="event-date" class="form-control">
+      <input type="text" id="event-location" class="form-control" placeholder="Local">
+      <textarea id="event-description" class="form-control" placeholder="Descrição"></textarea>
+      <button onclick="createEvent()" class="btn btn-primary">Cadastrar Evento</button>
+    </div>
+    
+    <style>
+        body {
+          background-color: #f4f4f4;
+        }
+        .event-item {
+          background-color: white;
+          border-radius: 50%;
+          padding: 20px;
+          margin-bottom: 20px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.2s ease-in-out;
+          text-align: center;
+        }
+        .event-item:hover {
+          transform: scale(1.05);
+        }
+        .event-title {
+          font-size: 1.5em;
+          font-weight: bold;
+          color: #007bff;
+          margin-bottom: 10px;
+        }
+        .event-details {
+          font-size: 1em;
+          color: #555;
+          margin-bottom: 15px;
+        }
+        .event-date, .event-location {
+          margin: 5px 0;
+        }
+        .event-description {
+          font-size: 0.9em;
+          color: #333;
+        }
+        button {
+          margin-top: 10px;
+        }
+      </style>
+  </head>
+  <body>
+  
+    <!-- Lista de eventos com caixa redonda -->
+    <div class="container">
+      <h1 class="text-center my-5">Eventos Cadastrados</h1>
+      
+      <div class="row">
+        <!-- Evento 1 -->
+        <div class="col-md-4">
+          <div class="event-item">
+            <h4 class="event-title">Conferência de Tecnologia 2024</h4>
+            <p class="event-date"><i class="fas fa-calendar-alt"></i> <strong>Data:</strong> 10 de Janeiro de 2024</p>
+            <p class="event-location"><i class="fas fa-map-marker-alt"></i> <strong>Local:</strong> São Paulo, SP</p>
+            <p class="event-description"><strong>Descrição:</strong> Uma grande conferência sobre inovações tecnológicas com palestrantes renomados.</p>
+            <button class="btn btn-outline-primary btn-sm">Ver Detalhes</button>
+          </div>
+        </div>
+  
+        <!-- Evento 2 -->
+        <div class="col-md-4">
+          <div class="event-item">
+            <h4 class="event-title">Festival de Música Rock 2024</h4>
+            <p class="event-date"><i class="fas fa-calendar-alt"></i> <strong>Data:</strong> 20 de Fevereiro de 2024</p>
+            <p class="event-location"><i class="fas fa-map-marker-alt"></i> <strong>Local:</strong> Rio de Janeiro, RJ</p>
+            <p class="event-description"><strong>Descrição:</strong> Festival com bandas de rock, comida e bebidas. Prepare-se para curtir muita música!</p>
+            <button class="btn btn-outline-primary btn-sm">Ver Detalhes</button>
+          </div>
+        </div>
+  
+        <!-- Evento 3 -->
+        <div class="col-md-4">
+          <div class="event-item">
+            <h4 class="event-title">Workshop de Fotografia</h4>
+            <p class="event-date"><i class="fas fa-calendar-alt"></i> <strong>Data:</strong> 5 de Março de 2024</p>
+            <p class="event-location"><i class="fas fa-map-marker-alt"></i> <strong>Local:</strong> Curitiba, PR</p>
+            <p class="event-description"><strong>Descrição:</strong> Workshop para iniciantes e profissionais. Aprenda técnicas de fotografia e edição de imagem.</p>
+            <button class="btn btn-outline-primary btn-sm">Ver Detalhes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+        <!-- Aqui serão exibidos os eventos em caixas redondas -->
+      </ul>
+    </div>
+  </div>
+
+  <!-- Scripts do Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+   <!-- Scripts do Bootstrap e Font Awesome -->
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
